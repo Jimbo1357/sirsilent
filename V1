@@ -10,7 +10,7 @@ local exit = Instance.new("TextButton")
 
 V1.Name = "V1"
 V1.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-V1.Enabled = false
+V1.Enabled = true
 V1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Frame.Parent = V1
