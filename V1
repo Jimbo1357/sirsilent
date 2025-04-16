@@ -1,0 +1,191 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local V1 = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local title = Instance.new("TextLabel")
+local code = Instance.new("TextBox")
+local execute = Instance.new("TextButton")
+local erroroutput = Instance.new("TextLabel")
+local exit = Instance.new("TextButton")
+
+--Properties:
+
+V1.Name = "V1"
+V1.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+V1.Enabled = false
+V1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = V1
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BackgroundTransparency = 0.300
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.488657266, 0, 0.143216074, 0)
+Frame.Size = UDim2.new(0, 542, 0, 329)
+
+title.Name = "title"
+title.Parent = Frame
+title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+title.BackgroundTransparency = 1.000
+title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+title.BorderSizePixel = 0
+title.Size = UDim2.new(0, 300, 0, 50)
+title.Font = Enum.Font.SourceSansBold
+title.Text = "sir silent v1"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.TextScaled = true
+title.TextSize = 14.000
+title.TextWrapped = true
+
+code.Name = "code"
+code.Parent = Frame
+code.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+code.BackgroundTransparency = 0.300
+code.BorderColor3 = Color3.fromRGB(0, 0, 0)
+code.BorderSizePixel = 0
+code.LayoutOrder = 1
+code.Position = UDim2.new(0, 0, 0.151975691, 0)
+code.Size = UDim2.new(0, 542, 0, 279)
+code.Font = Enum.Font.SourceSansBold
+code.MultiLine = true
+code.Text = ""
+code.TextColor3 = Color3.fromRGB(255, 255, 255)
+code.TextSize = 28.000
+code.TextWrapped = true
+
+execute.Name = "execute"
+execute.Parent = Frame
+execute.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+execute.BackgroundTransparency = 0.700
+execute.BorderColor3 = Color3.fromRGB(0, 0, 0)
+execute.BorderSizePixel = 0
+execute.Position = UDim2.new(0.55350554, 0, 0.0395136774, 0)
+execute.Size = UDim2.new(0, 83, 0, 24)
+execute.Font = Enum.Font.SourceSansBold
+execute.Text = "execute"
+execute.TextColor3 = Color3.fromRGB(255, 255, 255)
+execute.TextScaled = true
+execute.TextSize = 14.000
+execute.TextWrapped = true
+
+erroroutput.Name = "error output"
+erroroutput.Parent = Frame
+erroroutput.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+erroroutput.BackgroundTransparency = 0.300
+erroroutput.BorderColor3 = Color3.fromRGB(0, 0, 0)
+erroroutput.BorderSizePixel = 0
+erroroutput.Position = UDim2.new(0, 0, 1, 0)
+erroroutput.Size = UDim2.new(0, 542, 0, 89)
+erroroutput.Font = Enum.Font.SourceSansBold
+erroroutput.Text = ""
+erroroutput.TextColor3 = Color3.fromRGB(255, 255, 255)
+erroroutput.TextScaled = true
+erroroutput.TextSize = 14.000
+erroroutput.TextWrapped = true
+
+exit.Name = "exit"
+exit.Parent = Frame
+exit.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+exit.BackgroundTransparency = 0.700
+exit.BorderColor3 = Color3.fromRGB(0, 0, 0)
+exit.BorderSizePixel = 0
+exit.Position = UDim2.new(0.933579326, 0, 0.0395136774, 0)
+exit.Size = UDim2.new(0, -83, 0, 24)
+exit.Font = Enum.Font.SourceSansBold
+exit.Text = "exit"
+exit.TextColor3 = Color3.fromRGB(255, 255, 255)
+exit.TextScaled = true
+exit.TextSize = 14.000
+exit.TextWrapped = true
+
+-- Scripts:
+
+local function HCBZ_fake_script() -- Frame.LocalScript 
+	local script = Instance.new('LocalScript', Frame)
+
+	local success, err = pcall(function()
+	
+		local frame = script.Parent
+		local codeBox = frame:FindFirstChild("code")
+		local executeBtn = frame:FindFirstChild("execute")
+		local errorOutput = frame:FindFirstChild("error output")
+		local exitBtn = frame:FindFirstChild("exit")
+		local UIS = game:GetService("UserInputService")
+	
+		if not (frame and codeBox and executeBtn and errorOutput and exitBtn) then
+			return -- silently fail if something is missing
+		end
+	
+		frame.Active = true
+		frame.Draggable = false
+		errorOutput.Text = ""
+	
+		local function safeExecute()
+			local code = codeBox.Text
+			local func, syntaxError = loadstring(code)
+	
+			if not func then
+				errorOutput.Text = "[Syntax Error] " .. tostring(syntaxError)
+				return
+			end
+	
+			local ok, runtimeErr = pcall(func)
+			if ok then
+				errorOutput.Text = "[Success] Code ran with no errors ✅"
+			else
+				errorOutput.Text = "[Runtime Error] " .. tostring(runtimeErr)
+			end
+		end
+	
+		executeBtn.MouseButton1Click:Connect(function()
+			pcall(safeExecute)
+		end)
+	
+		exitBtn.MouseButton1Click:Connect(function()
+			frame.Visible = false
+		end)
+	
+		-- Draggable frame (safe version)
+		local dragging, dragInput, dragStart, startPos
+	
+		frame.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 then
+				dragging = true
+				dragStart = input.Position
+				startPos = frame.Position
+	
+				input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragging = false
+					end
+				end)
+			end
+		end)
+	
+		frame.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement then
+				dragInput = input
+			end
+		end)
+	
+		UIS.InputChanged:Connect(function(input)
+			if input == dragInput and dragging then
+				local delta = input.Position - dragStart
+				frame.Position = UDim2.new(
+					startPos.X.Scale, startPos.X.Offset + delta.X,
+					startPos.Y.Scale, startPos.Y.Offset + delta.Y
+				)
+			end
+		end)
+	end)
+	
+	-- Final outer catch — stops red error text
+	if not success then
+		-- Nothing happens here on purpose: silent fail
+	end
+	
+end
+coroutine.wrap(HCBZ_fake_script)()
