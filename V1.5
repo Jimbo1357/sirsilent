@@ -1,0 +1,232 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local V2 = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local version = Instance.new("TextLabel")
+local title = Instance.new("TextLabel")
+local Executor = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local execute = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local code = Instance.new("TextBox")
+local UICorner_4 = Instance.new("UICorner")
+local exit = Instance.new("TextButton")
+local UICorner_5 = Instance.new("UICorner")
+local erroroutput = Instance.new("TextLabel")
+local UICorner_6 = Instance.new("UICorner")
+
+--Properties:
+
+V2.Name = "V2"
+V2.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+V2.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = V2
+Frame.BackgroundColor3 = Color3.fromRGB(32, 47, 75)
+Frame.BackgroundTransparency = 0.150
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.285101175, 0, 0.189698517, 0)
+Frame.Size = UDim2.new(0, 813, 0, 446)
+
+UICorner.Parent = Frame
+
+version.Name = "version"
+version.Parent = Frame
+version.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+version.BackgroundTransparency = 1.000
+version.BorderColor3 = Color3.fromRGB(0, 0, 0)
+version.BorderSizePixel = 0
+version.Position = UDim2.new(0, 0, 0.932735443, 0)
+version.Size = UDim2.new(0, 813, 0, 20)
+version.Font = Enum.Font.SourceSansBold
+version.Text = "Version: V2"
+version.TextColor3 = Color3.fromRGB(0, 0, 0)
+version.TextScaled = true
+version.TextSize = 14.000
+version.TextWrapped = true
+
+title.Name = "title"
+title.Parent = Frame
+title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+title.BackgroundTransparency = 1.000
+title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+title.BorderSizePixel = 0
+title.Size = UDim2.new(0, 813, 0, 61)
+title.Font = Enum.Font.SourceSansBold
+title.Text = "Sir Silent"
+title.TextColor3 = Color3.fromRGB(0, 0, 0)
+title.TextScaled = true
+title.TextSize = 14.000
+title.TextWrapped = true
+
+Executor.Name = "Executor"
+Executor.Parent = Frame
+Executor.BackgroundColor3 = Color3.fromRGB(65, 98, 154)
+Executor.BackgroundTransparency = 0.350
+Executor.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Executor.BorderSizePixel = 0
+Executor.Position = UDim2.new(0.0174170155, 0, 0.137200907, 0)
+Executor.Size = UDim2.new(0, 785, 0, 345)
+
+UICorner_2.Parent = Executor
+
+execute.Name = "execute"
+execute.Parent = Frame
+execute.BackgroundColor3 = Color3.fromRGB(31, 45, 72)
+execute.BackgroundTransparency = 0.350
+execute.BorderColor3 = Color3.fromRGB(0, 0, 0)
+execute.BorderSizePixel = 0
+execute.Position = UDim2.new(0.0444929004, 0, 0.180150911, 0)
+execute.Size = UDim2.new(0, 740, 0, 43)
+execute.Font = Enum.Font.SourceSansBold
+execute.Text = "Execute"
+execute.TextColor3 = Color3.fromRGB(0, 0, 0)
+execute.TextScaled = true
+execute.TextSize = 14.000
+execute.TextWrapped = true
+
+UICorner_3.Parent = execute
+
+code.Name = "code"
+code.Parent = Frame
+code.BackgroundColor3 = Color3.fromRGB(31, 45, 72)
+code.BackgroundTransparency = 0.350
+code.BorderColor3 = Color3.fromRGB(0, 0, 0)
+code.BorderSizePixel = 0
+code.Position = UDim2.new(0.0444929004, 0, 0.309672117, 0)
+code.Size = UDim2.new(0, 740, 0, 126)
+code.Font = Enum.Font.SourceSansBold
+code.MultiLine = true
+code.Text = ""
+code.TextColor3 = Color3.fromRGB(0, 0, 0)
+code.TextSize = 28.000
+
+UICorner_4.Parent = code
+
+exit.Name = "exit"
+exit.Parent = Frame
+exit.BackgroundColor3 = Color3.fromRGB(62, 94, 148)
+exit.BackgroundTransparency = 0.350
+exit.BorderColor3 = Color3.fromRGB(0, 0, 0)
+exit.BorderSizePixel = 0
+exit.Position = UDim2.new(0.859405339, 0, 0.0250933189, 0)
+exit.Size = UDim2.new(0, 100, 0, 42)
+exit.Font = Enum.Font.SourceSansBold
+exit.Text = "X"
+exit.TextColor3 = Color3.fromRGB(0, 0, 0)
+exit.TextScaled = true
+exit.TextSize = 14.000
+exit.TextWrapped = true
+
+UICorner_5.Parent = exit
+
+erroroutput.Name = "error output"
+erroroutput.Parent = Frame
+erroroutput.BackgroundColor3 = Color3.fromRGB(30, 44, 70)
+erroroutput.BackgroundTransparency = 0.350
+erroroutput.BorderColor3 = Color3.fromRGB(0, 0, 0)
+erroroutput.BorderSizePixel = 0
+erroroutput.Position = UDim2.new(0.0444929004, 0, 0.636207402, 0)
+erroroutput.Size = UDim2.new(0, 740, 0, 105)
+erroroutput.Font = Enum.Font.SourceSansBold
+erroroutput.Text = ""
+erroroutput.TextColor3 = Color3.fromRGB(0, 0, 0)
+erroroutput.TextScaled = true
+erroroutput.TextSize = 14.000
+erroroutput.TextWrapped = true
+
+UICorner_6.Parent = erroroutput
+
+-- Scripts:
+
+local function GIKHVK_fake_script() -- Frame.LocalScript 
+	local script = Instance.new('LocalScript', Frame)
+
+	local success, err = pcall(function()
+	
+		local frame = script.Parent
+		local codeBox = frame:FindFirstChild("code")
+		local executeBtn = frame:FindFirstChild("execute")
+		local errorOutput = frame:FindFirstChild("error output")
+		local exitBtn = frame:FindFirstChild("exit")
+		local UIS = game:GetService("UserInputService")
+	
+		if not (frame and codeBox and executeBtn and errorOutput and exitBtn) then
+			return -- silently fail if something is missing
+		end
+	
+		frame.Active = true
+		frame.Draggable = false
+		errorOutput.Text = ""
+	
+		local function safeExecute()
+			local code = codeBox.Text
+			local func, syntaxError = loadstring(code)
+	
+			if not func then
+				errorOutput.Text = "[Syntax Error] " .. tostring(syntaxError)
+				return
+			end
+	
+			local ok, runtimeErr = pcall(func)
+			if ok then
+				errorOutput.Text = "[Success] Code ran with no errors ✅"
+			else
+				errorOutput.Text = "[Runtime Error] " .. tostring(runtimeErr)
+			end
+		end
+	
+		executeBtn.MouseButton1Click:Connect(function()
+			pcall(safeExecute)
+		end)
+	
+		exitBtn.MouseButton1Click:Connect(function()
+			frame.Visible = false
+		end)
+	
+		-- Draggable frame (safe version)
+		local dragging, dragInput, dragStart, startPos
+	
+		frame.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 then
+				dragging = true
+				dragStart = input.Position
+				startPos = frame.Position
+	
+				input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragging = false
+					end
+				end)
+			end
+		end)
+	
+		frame.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement then
+				dragInput = input
+			end
+		end)
+	
+		UIS.InputChanged:Connect(function(input)
+			if input == dragInput and dragging then
+				local delta = input.Position - dragStart
+				frame.Position = UDim2.new(
+					startPos.X.Scale, startPos.X.Offset + delta.X,
+					startPos.Y.Scale, startPos.Y.Offset + delta.Y
+				)
+			end
+		end)
+	end)
+	
+	-- Final outer catch — stops red error text
+	if not success then
+		-- Nothing happens here on purpose: silent fail
+	end
+	
+end
+coroutine.wrap(GIKHVK_fake_script)()
